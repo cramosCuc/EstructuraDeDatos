@@ -46,7 +46,8 @@ public class Edatos {
         System.out.println("Se atendió el nodo: "+nodo.getValor());
         cola.display();
         */
-        /*HashTable*/
+        System.out.println("HashTable");
+        
         Persona p1= new Persona("138472934", "Carlos Eduardo", "Ramos Villera", "cramos@cuc.edu.co", "3043377541");
         Persona p2= new Persona("138443975", "Cristian Daniel", "Aragón Peñafiel", "caragon@cuc.edu.co", "304245934");
         Persona p3= new Persona("138423422", "Diego Andrés", "Molina Estrén", "dmolina@cuc.edu.co", "30345641");
