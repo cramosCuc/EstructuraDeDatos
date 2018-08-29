@@ -5,6 +5,8 @@
  */
 package edatos;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author cramos
@@ -29,12 +31,12 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnCrearContacto = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        btnBuscar = new javax.swing.JButton();
+        btnListarContactos = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        PanelEscritorio = new javax.swing.JDesktopPane();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -45,55 +47,57 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/add-friend.png"))); // NOI18N
-        jButton1.setText("Crear Contacto");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/add-friend.png"))); // NOI18N
+        btnCrearContacto.setText("Crear Contacto");
+        btnCrearContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCrearContactoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
+        jPanel1.add(btnCrearContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 40));
 
         jTextField1.setText(" ");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 120, 40));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/search.png"))); // NOI18N
-        jButton2.setText("Buscar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/search.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/list.png"))); // NOI18N
-        jButton3.setText("Listar Contactos");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+        btnListarContactos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/list.png"))); // NOI18N
+        btnListarContactos.setText("Listar Contactos");
+        jPanel1.add(btnListarContactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/logout.png"))); // NOI18N
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/logout.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 60));
-
-        jDesktopPane1.setBackground(new java.awt.Color(0, 153, 204));
-        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 65, 700, 430));
+        getContentPane().add(PanelEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 700, 430));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearContactoActionPerformed
         // TODO add your handling code here:
-        frmContacto v1 = new frmContacto();
+        frmContacto vent=new frmContacto();
+        Dimension escritorioSize = this.PanelEscritorio.getSize();
+        Dimension frmcontactoSize = vent.getSize();
+        vent.setLocation((escritorioSize.width - frmcontactoSize.width)/2, (escritorioSize.height - frmcontactoSize.height)/2);
+        PanelEscritorio.add(vent);
+        vent.setVisible(true);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCrearContactoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,12 +135,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JDesktopPane PanelEscritorio;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCrearContacto;
+    private javax.swing.JButton btnListarContactos;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
