@@ -5,7 +5,13 @@
  */
 package edatos;
 
+import com.google.gson.Gson;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Hashtable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,13 +19,14 @@ import javax.swing.JOptionPane;
  * @author cramos
  */
 public class frmContacto extends javax.swing.JInternalFrame {
-
-    private static Hashtable<String, Persona> contactos = new Hashtable();
+     private Hashtable<String, Persona> contactos;
+  
     /**
      * Creates new form frmContacto
      */
-    public frmContacto() {
+    public frmContacto(Hashtable<String, Persona> contactos) {
         initComponents();
+        this.contactos=contactos;
     }
 
     /**
@@ -55,7 +62,7 @@ public class frmContacto extends javax.swing.JInternalFrame {
         lblTitulo.setText("Nombres:");
         jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/phone-book (1).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/phone-book (1).png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 70, 70));
 
         lblTitulo1.setText("Nuevo Contacto");
@@ -110,8 +117,8 @@ public class frmContacto extends javax.swing.JInternalFrame {
         contactos.put(this.txtCedula.getText(), p);
         //System.out.println("Ok");
         JOptionPane.showMessageDialog(null, "Datos guardados");
+        serializar();
         this.dispose();
-        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -119,6 +126,26 @@ public class frmContacto extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+private void serializar(){
+    FileWriter filew = null;
+         try {
+             Gson gson = new Gson();
+             String scontactos = gson.toJson(this.contactos);
+             File archivo = new File("datos.json");
+             filew = new FileWriter(archivo,false);
+             filew.write(scontactos);
+             filew.flush();
+             filew.close();
+         } catch (IOException ex) {
+             Logger.getLogger(frmContacto.class.getName()).log(Level.SEVERE, null, ex);
+         } finally {
+             try {
+                 filew.close();
+             } catch (IOException ex) {
+                 Logger.getLogger(frmContacto.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+ }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

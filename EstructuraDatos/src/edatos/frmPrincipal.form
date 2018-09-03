@@ -63,7 +63,7 @@
         <Component class="javax.swing.JButton" name="btnCrearContacto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edatos/add-friend.png"/>
+              <Image iconType="3" name="/Iconos/add-friend.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Crear Contacto"/>
           </Properties>
@@ -89,7 +89,7 @@
         <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edatos/search.png"/>
+              <Image iconType="3" name="/Iconos/search.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
@@ -102,10 +102,13 @@
         <Component class="javax.swing.JButton" name="btnListarContactos">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edatos/list.png"/>
+              <Image iconType="3" name="/Iconos/list.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Listar Contactos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarContactosActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="430" y="10" width="-1" height="-1"/>
@@ -115,7 +118,7 @@
         <Component class="javax.swing.JButton" name="btnSalir">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/edatos/logout.png"/>
+              <Image iconType="3" name="/Iconos/logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>

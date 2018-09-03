@@ -5,7 +5,12 @@
  */
 package edatos;
 
+import com.google.gson.Gson;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Hashtable;
 
 /**
  *
@@ -16,8 +21,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form frmPrincipal
      */
+    public Hashtable <String, Persona> contactos = new Hashtable();
     public frmPrincipal() {
         initComponents();
+        deserializar();
     }
 
     /**
@@ -47,7 +54,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCrearContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/add-friend.png"))); // NOI18N
+        btnCrearContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add-friend.png"))); // NOI18N
         btnCrearContacto.setText("Crear Contacto");
         btnCrearContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,15 +66,20 @@ public class frmPrincipal extends javax.swing.JFrame {
         jTextField1.setText(" ");
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 120, 40));
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/search.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/search.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
-        btnListarContactos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/list.png"))); // NOI18N
+        btnListarContactos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/list.png"))); // NOI18N
         btnListarContactos.setText("Listar Contactos");
+        btnListarContactos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarContactosActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnListarContactos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edatos/logout.png"))); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/logout.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +94,21 @@ public class frmPrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ private void deserializar(){
+        BufferedReader br = null;
+        try {
+            Gson gson =new Gson();
+       
+            br = new BufferedReader(new FileReader("datos.json"));
+             contactos = gson.fromJson(br, Contactos1.class);
+            System.out.println("ok");
+        } catch (FileNotFoundException ex) {
+           System.out.println("Error en archivo. Verifique");
+        }
+    
+    }
+ 
+ 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -90,7 +116,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnCrearContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearContactoActionPerformed
         // TODO add your handling code here:
-        frmContacto vent=new frmContacto();
+        frmContacto vent=new frmContacto(contactos);
         Dimension escritorioSize = this.PanelEscritorio.getSize();
         Dimension frmcontactoSize = vent.getSize();
         vent.setLocation((escritorioSize.width - frmcontactoSize.width)/2, (escritorioSize.height - frmcontactoSize.height)/2);
@@ -98,6 +124,17 @@ public class frmPrincipal extends javax.swing.JFrame {
         vent.setVisible(true);
         
     }//GEN-LAST:event_btnCrearContactoActionPerformed
+
+    private void btnListarContactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarContactosActionPerformed
+        // TODO add your handling code here:
+        frmListarContactos frmlistarcontacto = new frmListarContactos();
+        Dimension escritorioSize = this.PanelEscritorio.getSize();
+        Dimension frmcontactoSize = frmlistarcontacto.getSize();
+        frmlistarcontacto.setLocation((escritorioSize.width - frmcontactoSize.width)/2, (escritorioSize.height - frmcontactoSize.height)/2);
+        
+        PanelEscritorio.add(frmlistarcontacto);
+        frmlistarcontacto.show();
+    }//GEN-LAST:event_btnListarContactosActionPerformed
 
     /**
      * @param args the command line arguments
